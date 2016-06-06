@@ -7,13 +7,11 @@ use Mentor\Config\ConfigProcessorInterface;
 class PostTypeConfig implements ConfigProcessorInterface
 {
 
-    private $fullConfig;
     private $config;
 
-    public function __construct(array $fullConfig)
+    public function __construct(array $config)
     {
-        $this->fullConfig = $fullConfig;
-        $this->config = $fullConfig['post_type'];
+        $this->config = $config;
     }
 
     public function process()
