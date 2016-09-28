@@ -7,6 +7,7 @@ use Zend\Config\Config;
 use MentorConfig\Resource\PostType\PostTypeConfig;
 use MentorConfig\Resource\PostStatus\PostStatusConfig;
 use MentorConfig\Resource\Support\NavMenu\NavMenuConfig;
+use MentorConfig\Resource\Support\ThemeSupport\ThemeSupportConfig;
 
 class Application extends Container
 {
@@ -23,6 +24,7 @@ class Application extends Container
         $this['PostTypeConfig'] = new PostTypeConfig($this['config']);
         $this['PostStatusConfig'] = new PostStatusConfig($this['config']);
         $this['NavMenuConfig'] = new NavMenuConfig($this['config']);
+        $this['ThemeSupportConfig'] = new ThemeSupportConfig($this['config']);
     }
 
     public function run()
@@ -30,6 +32,7 @@ class Application extends Container
         $this['PostTypeConfig']->process();
         $this['PostStatusConfig']->process();
         $this['NavMenuConfig']->process();
+        $this['ThemeSupportConfig']->process();
     }
 
 }

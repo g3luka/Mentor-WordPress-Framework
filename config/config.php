@@ -46,19 +46,28 @@ return array(
             'user' => 'Menu do Usuário'
 
         )
+    ),
+
+    'support' => array(
+        'add' => array(
+
+            'post-formats' => array('aside', 'gallery'),
+
+        )
     )
+
 );
 
 /*
 return array(
     'post_type' => array(),             // Registra custom post types no WordPress
     'post_status' => array(),           // Registra custom post status para os post types
-
     'nav_menu' => array(),              // registra áreas de menu
+    'support' => array(),               // Habilita theme supports
+
     'widget' => array(),                // registra widgets
     'shortcode' => array(),             // Registra shortcodes
     'thumbnail' => array(),             // Seta tamanhos às imagens
-    'support' => array(),               // Habilita theme supports
     'action' => array(),                // Adiciona aos hooks; usa o add_action()
     'filter' => array(),                // Adiciona filtros; usa o add_filter()
     'assets' => array(),                // Registra e chama js e css; configurações de assets
