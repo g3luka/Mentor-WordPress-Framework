@@ -1,0 +1,23 @@
+{
+    "name": "MentorConfig WordPress Framework",
+    "description": "Breve descrição do que a aplicação se propoe a fazer",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Giovanni de Luca",
+            "email": "g3luka@gmail.com"
+        }
+    ],
+    "require": {
+        "php": ">=5.6",
+        "pimple/pimple": "~3.0",
+        "zendframework/zend-config": "^2.6"
+    },
+    "autoload": {
+        "psr-4": {
+            "MentorConfig\\": "src/MentorConfig",
+            "Modules\\": "modules"
+        }
+    }
+
+}
