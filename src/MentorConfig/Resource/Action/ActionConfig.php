@@ -8,44 +8,62 @@ use Zend\Config\Config;
 class ActionConfig implements ResourceConfigInterface
 {
 
-    private $config;
+    private $add;
+    private $remove;
 
     public function __construct(Config $config)
     {
-        $this->config = $config;
+        if ( ! empty($config->action->add)) {
+            $this->add = $config->action->add->toArray();
+        }
+
+        if ( ! empty($config->action->remove)) {
+            $this->remove = $config->action->remove->toArray();
+        }
     }
 
     public function process()
     {
-        if (empty($this->config->action)) return;
-        if (empty($this->config->action->add)) return;
+        if ( ! empty($this->remove)) {
+            $this->remove();
+        }
 
-        $this->add();
+        if ( ! empty($this->add)) {
+            $this->add();
+        }
     }
 
     public function add()
     {
-        $addActions = $this->config->action->add->toArray();
 
-        foreach ($addActions as $tag => $arguments) {
-            $this->attach($tag, $arguments);
+        foreach ($this->add as $tag => $arguments) {
+            foreach ($arguments as $action) {
+                $action = $this->parse($action);
+                if (empty($action['function'])) continue;
+                add_action($tag, $action['function'], $action['priority'], $action['args']);
+            }
         }
     }
 
-    public function attach($name, array $arguments)
+    public function remove()
     {
-        foreach ($arguments as $action) {
-            $defaults = array(
-                'function'  => false,
-                'priority'  => 10,
-                'args'      => 1
-            );
-            $action = array_merge($defaults, $action);
-
-            if (empty($action['function'])) continue;
-
-            add_action($name, $action['function'], $action['priority'], $action['args']);
+        foreach ($this->remove as $tag => $arguments) {
+            foreach ($arguments as $action) {
+                $action = $this->parse($action);
+                if (empty($action['function'])) continue;
+                remove_action($tag, $action['function'], $action['priority']);
+            }
         }
+    }
+
+    public function parse(array $action)
+    {
+        $defaults = array(
+            'function'  => false,
+            'priority'  => 10,
+            'args'      => 1
+        );
+        return array_merge($defaults, $action);
     }
 
 }
