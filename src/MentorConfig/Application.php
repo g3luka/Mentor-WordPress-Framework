@@ -8,6 +8,7 @@ use MentorConfig\Resource\PostType\PostTypeConfig;
 use MentorConfig\Resource\PostStatus\PostStatusConfig;
 use MentorConfig\Resource\Support\NavMenu\NavMenuConfig;
 use MentorConfig\Resource\Support\ThemeSupport\ThemeSupportConfig;
+use MentorConfig\Resource\Action\ActionConfig;
 
 class Application extends Container
 {
@@ -25,6 +26,7 @@ class Application extends Container
         $this['PostStatusConfig'] = new PostStatusConfig($this['config']);
         $this['NavMenuConfig'] = new NavMenuConfig($this['config']);
         $this['ThemeSupportConfig'] = new ThemeSupportConfig($this['config']);
+        $this['ActionConfig'] = new ActionConfig($this['config']);
     }
 
     public function run()
@@ -33,6 +35,7 @@ class Application extends Container
         $this['PostStatusConfig']->process();
         $this['NavMenuConfig']->process();
         $this['ThemeSupportConfig']->process();
+        $this['ActionConfig']->process();
     }
 
 }

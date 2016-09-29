@@ -54,7 +54,25 @@ return array(
             'post-formats' => array('aside', 'gallery'),
 
         )
+    ),
+
+
+    'action' => array(
+        'add' => array(
+
+            'init' => array(
+
+                array(
+                    'function' => 'test_mentor_config_action',
+//                    'priority' => 10,
+//                    'args' => 1
+                )
+
+            )
+
+        )
     )
+
 
 );
 
@@ -65,11 +83,11 @@ return array(
     'nav_menu' => array(),              // registra áreas de menu
     'support' => array(),               // Habilita theme supports
 
+    'action' => array(),                // Adiciona aos hooks; usa o add_action()
+    'filter' => array(),                // Adiciona filtros; usa o add_filter()
     'widget' => array(),                // registra widgets
     'shortcode' => array(),             // Registra shortcodes
     'thumbnail' => array(),             // Seta tamanhos às imagens
-    'action' => array(),                // Adiciona aos hooks; usa o add_action()
-    'filter' => array(),                // Adiciona filtros; usa o add_filter()
     'assets' => array(),                // Registra e chama js e css; configurações de assets
     'query' => array(),                 // Registra queries personalizadas; intercepta requisições
     'ajax' => array(),                  // Liberações de permissão de Ajax
