@@ -9,6 +9,7 @@ use MentorConfig\Resource\PostStatus\PostStatusConfig;
 use MentorConfig\Resource\Support\NavMenu\NavMenuConfig;
 use MentorConfig\Resource\Support\ThemeSupport\ThemeSupportConfig;
 use MentorConfig\Resource\Action\ActionConfig;
+use MentorConfig\Resource\Filter\FilterConfig;
 
 class Application extends Container
 {
@@ -27,6 +28,7 @@ class Application extends Container
         $this['NavMenuConfig'] = new NavMenuConfig($this['config']);
         $this['ThemeSupportConfig'] = new ThemeSupportConfig($this['config']);
         $this['ActionConfig'] = new ActionConfig($this['config']);
+        $this['FilterConfig'] = new FilterConfig($this['config']);
     }
 
     public function run()
@@ -36,6 +38,7 @@ class Application extends Container
         $this['NavMenuConfig']->process();
         $this['ThemeSupportConfig']->process();
         $this['ActionConfig']->process();
+        $this['FilterConfig']->process();
     }
 
 }

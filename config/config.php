@@ -62,16 +62,40 @@ return array(
 
             'init' => array(
 
+//                array('function' => 'test_mentor_config_action')
+
+            )
+
+        )
+    ),
+
+
+    'filter' => array(
+        'add' => array(
+
+            'body_class' => array(
+
                 array(
-                    'function' => 'test_mentor_config_action',
-//                    'priority' => 10,
-//                    'args' => 1
+                    'function' => 'mentor_filter'
+                )
+
+            )
+
+        ),
+
+        'remove' => array(
+
+            'body_class' => array(
+
+                array(
+                    'function' => 'mentor_filter'
                 )
 
             )
 
         )
-    )
+
+    ),
 
 
 );
@@ -82,9 +106,9 @@ return array(
     'post_status' => array(),           // Registra custom post status para os post types
     'nav_menu' => array(),              // registra áreas de menu
     'support' => array(),               // Habilita theme supports
-
     'action' => array(),                // Adiciona aos hooks; usa o add_action()
     'filter' => array(),                // Adiciona filtros; usa o add_filter()
+
     'widget' => array(),                // registra widgets
     'shortcode' => array(),             // Registra shortcodes
     'thumbnail' => array(),             // Seta tamanhos às imagens
